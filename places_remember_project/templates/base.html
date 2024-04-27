@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" /> {% endcomment %}
+  </head>
+  <title>
+    {% block title %}
+      empty
+    {% endblock %}
+  </title>
+  <body>
+    {% comment %} {% include 'includes/header.html' %} {% endcomment %}
+    <main>
+      {% block content %}
+        empty
+      {% endblock %}
+    </main>
+  </body>
+</html>

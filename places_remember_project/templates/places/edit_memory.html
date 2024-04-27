@@ -1,0 +1,9 @@
+<!-- places/templates/places/edit_memory.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Edit Memory</h1>
+  <form method="post">
+    {% csrf_token %}
+    <!-- Форма редактирования воспоминания -->
+  </form>
+{% endblock %}

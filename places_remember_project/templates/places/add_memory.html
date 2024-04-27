@@ -1,0 +1,9 @@
+<!-- places/templates/places/add_memory.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Add Memory</h1>
+  <form method="post">
+    {% csrf_token %}
+    <!-- Форма добавления воспоминания -->
+  </form>
+{% endblock %}
