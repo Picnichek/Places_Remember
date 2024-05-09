@@ -1,9 +1,10 @@
-<!-- places/templates/places/edit_memory.html -->
 {% extends 'base.html' %}
+{% block title %}
+  Edit Memory
+{% endblock %}
 {% block content %}
-  <h1>Edit Memory</h1>
-  <form method="post">
-    {% csrf_token %}
-    <!-- Форма редактирования воспоминания -->
-  </form>
+  <div class="container py-5">
+    <h1>Редактировать воспоминание</h1>
+    {% include 'includes/form.html' %}
+  </div>
 {% endblock %}

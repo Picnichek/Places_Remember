@@ -1,20 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>Welcome, {{ request.user.username }}</h1>
-  <img src="{{ request.user.userprofile.photo.url }}" alt="Profile Photo" />
-  <p>
-    Click <a href="{% url 'add_memory' %}">here</a> to add a memory.
-  </p>
-  {% if memories %}
-    <h2>Your Memories:</h2>
-    <ul>
-      {% for memory in memories %}
-        <li>
-          <a href="{% url 'edit_memory' memory.id %}">{{ memory.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>You have no memories yet.</p>
-  {% endif %}
+  <div class="container py-5">
+    <div class="card">
+      <div class="card-header">
+        <h1>Здравствуйте, {{ user.first_name }} {{ user.last_name }} {{ user.username }} !</h1>
+      </div>
+      <div class="card-body">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <p>
+                <a class="btn btn-primary" href="{% url 'places:add_memory' %}">Добавить воспоминание</a>
+              </p>
+              {% if memories %}
+                <h2>Ваши воспоминания:</h2>
+                <div class="list-group">
+                  {% for memory in memories %}
+                    <a class="list-group-item list-group-item-action text-center fs-4" href="{% url 'places:edit_memory' memory.id %}">{{ memory.title }}</a>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <p>У вас нет ни одного воспоминания.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -1,0 +1,51 @@
+{% block scripts %}
+  {% include 'includes/map.html' %}
+{% endblock %}
+{% with view_name=request.resolver_match.view_name %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form method="post">
+          {% csrf_token %}
+          <div class="my-3 p-3">
+            <div class="form-group">
+              <label for="id_title">{{ form.title.label }}</label>
+              <input type="text" class="form-control" id="id_title" name="title" value="{{ memory.title }}" placeholder="Введите {{ form.title.label|lower }}" />
+            </div>
+            <div class="form-group">
+              <label for="id_location">{{ form.location.label }}</label>
+              <input type="text"
+                class="form-control"
+                id="id_location"
+                name="location"
+                {% if memory.location %}
+                value="{{ memory.location }}"
+                {% endif %}
+                placeholder="Введите {{ form.location.label|lower }}" />
+            </div>
+            <div class="form-group">
+              <label for="id_comment">{{ form.comment.label }}</label>
+              <textarea class="form-control" id="id_comment" name="comment" rows="3" placeholder="Введите {{ form.comment.label|lower }}">{{ memory.comment }}</textarea>
+            </div>
+
+            {{ form.latitude.as_hidden }}
+            {{ form.longitude.as_hidden }}
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <div id="map" class="map"></div>
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            {% if view_name == 'places:add_memory' %}
+              <a class="btn btn-secondary" href="{% url 'places:home' %}">Отмена</a>
+            {% else %}
+              <a class="btn btn-danger" href="{% url 'places:delete_memory' memory.id %}">Удалить воспоминание</a>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endwith %}
