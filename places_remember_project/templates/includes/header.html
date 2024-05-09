@@ -1,0 +1,42 @@
+{% load static %}
+<header>
+    <nav class="navbar navbar-light" style="background-color: lightskyblue">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'places:home' %}">
+          Логотип сайта
+        </a>
+        {% with request.resolver_match.view_name as view_name %}
+        <ul class="nav nav-pills">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <form id="logoutForm" method="post" action="{% url "users:logout" %}">
+                  {% csrf_token %}
+                </form>
+                <a class="nav-link link-light {% if view_name  == "users:logout" %}
+                active
+                {% endif %}" href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">Выйти</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link">Пользователь: {% if user.first_name %} {{ user.first_name }} {% else %} {{ user.username }} {% endif %}</a>
+              </li>
+              <li class="nav-item">
+                {% if user.photo_max %}
+                <img src="{{ user.photo_max }}" alt="Profile Photo" width="40" height="auto" class="img-fluid rounded-circle align-self-center"/>
+                {% else %}
+                <img src="{% static "img/avatar.png" %}" alt="Profile Photo" width="40" height="auto" class="img-fluid rounded-circle align-self-center"/>
+                {% endif %}
+              </li>
+              
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link link-light {% if view_name  == "social:begin" %}
+                  active
+                  {% endif %}"
+                  href="{% url 'social:begin' 'vk-oauth2' %}">Войти через VK</a>
+              </li>
+            {% endif %}
+            {% endwith %}
+        </ul>
+      </div>
+    </nav>
+  </header>
