@@ -7,7 +7,7 @@ from .services import update_user_photo_from_vk
 
 @receiver(user_logged_in)
 def update_user_photo(sender, request, user, **kwargs):
-    if user.username != 'admin':
+    if hasattr(user, 'social_user'):
         update_user_photo_from_vk(user)
 
 
