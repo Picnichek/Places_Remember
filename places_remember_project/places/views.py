@@ -4,8 +4,7 @@ from .models import Memory
 from .forms import MemoryForm
 from django.conf import settings
 
-url = "https://api-maps.yandex.ru/2.1/?apikey=" + \
-    settings.YANDEX_MAPS_API_KEY + "&lang=ru_RU"
+url = "https://api-maps.yandex.ru/2.1/?apikey=" + settings.YANDEX_MAPS_API_KEY + "&lang=ru_RU"
 
 
 @login_required
@@ -23,9 +22,8 @@ def add_memory(request):
             memory.user = request.user
             memory.save()
             return redirect('places:home')
-    else:
-        form = MemoryForm()
-        return render(request, 'places/add_memory.html', {'form': form, 'url': url})
+    form = MemoryForm()
+    return render(request, 'places/add_memory.html', {'form': form, 'url': url})
 
 
 @login_required
@@ -38,9 +36,8 @@ def edit_memory(request, memory_id):
         if form.is_valid():
             form.save()
             return redirect('places:home')
-    else:
-        form = MemoryForm(instance=memory)
-        return render(request, 'places/edit_memory.html', {'form': form, 'memory': memory, 'url': url})
+    form = MemoryForm(instance=memory)
+    return render(request, 'places/edit_memory.html', {'form': form, 'memory': memory, 'url': url})
 
 
 @login_required

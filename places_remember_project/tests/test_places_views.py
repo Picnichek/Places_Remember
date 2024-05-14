@@ -28,7 +28,7 @@ def logged_in_another_client():
 
 @pytest.fixture
 def memories():
-    memories = [
+    return [
         {
             'title': 'Test Memory1',
             'location': 'Test Location1',
@@ -48,7 +48,6 @@ def memories():
             'latitude': 2.0,
             'longitude': 2.0},
     ]
-    return memories
 
 
 @pytest.mark.django_db
