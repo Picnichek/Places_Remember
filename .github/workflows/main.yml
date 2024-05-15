@@ -8,9 +8,9 @@ env:
   SOCIAL_AUTH_VK_OAUTH2_KEY: ${{ secrets.SOCIAL_AUTH_VK_OAUTH2_KEY }}
   SOCIAL_AUTH_VK_OAUTH2_SECRET: ${{ secrets.SOCIAL_AUTH_VK_OAUTH2_SECRET }}
   DB_ENGINE: django.db.backends.postgresql
-  DB_NAME: db
+  DB_NAME: postgres2
   POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
+  POSTGRES_PASSWORD: 20061996
   DB_HOST: localhost
   DB_PORT: 5432
 
