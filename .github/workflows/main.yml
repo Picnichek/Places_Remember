@@ -11,7 +11,7 @@ env:
   DB_NAME: postgres2
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: 20061996
-  DB_HOST: localhost
+  DB_HOST: 127.0.0.1
   DB_PORT: 5432
 
 jobs:
