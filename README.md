@@ -23,7 +23,8 @@
     pip install -r requirements.txt
     ```
 
-* Создать базу данных PostgreSQL и заполнить ".env" в соответствии с вашими данными в корне проекта:
+* Создать базу данных PostgreSQL
+    переименовать файл ".env.template" в ".env" и заполнить ".env" в соответствии с вашими данными в корне проекта:
     ```bash
     SECRET_KEY=20061996
     YANDEX_MAPS_API_KEY=somekey # ключ 
