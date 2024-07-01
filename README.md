@@ -1,4 +1,4 @@
-# Places_Remember
+# Places_Remember.
 
 Данное приложение развернуто на сервисе pythonanywhere. Ознакомиться можно тут:
     https://picnichek.pythonanywhere.com/
